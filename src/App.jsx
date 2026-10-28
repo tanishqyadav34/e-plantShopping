@@ -11,10 +11,10 @@ function App() {
   }
 
   return (
-    <main className="landing-page">
+    <main className="landing-page background-image">
       <div className="landing-content">
         <p className="eyebrow">Bring nature home</p>
-        <h1>Paradise Nursery</h1>
+        <h1>Welcome To Paradise Nursery</h1>
         <p className="landing-tagline">Grow a little green into your everyday.</p>
         <button className="button button-light" onClick={() => setShowProductList(true)}>
           Get Started

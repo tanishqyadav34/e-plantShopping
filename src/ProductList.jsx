@@ -48,6 +48,7 @@ function ProductList({ onHomeClick }) {
   const dispatch = useDispatch()
   const items = useSelector((state) => state.cart.items)
   const cartCount = items.reduce((total, item) => total + item.quantity, 0)
+  const addedToCart = Object.fromEntries(items.map((item) => [item.name, true]))
 
   return (
     <div className="shop-page">
@@ -76,7 +77,7 @@ function ProductList({ onHomeClick }) {
               <h2>{category.category}</h2>
               <div className="product-grid">
                 {category.plants.map((plant) => {
-                  const isAdded = items.some((item) => item.name === plant.name)
+                  const isAdded = addedToCart[plant.name]
                   return (
                     <article className="product-card" key={plant.name}>
                       <img

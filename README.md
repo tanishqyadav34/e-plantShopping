@@ -1,6 +1,6 @@
-# Paradise Nursery
+# e-plantShopping — Paradise Nursery
 
-Paradise Nursery is a responsive plant shop experience for discovering indoor plants and managing a shopping cart.
+Paradise Nursery (the e-plantShopping project) is a responsive plant shop experience for discovering indoor plants and managing a shopping cart.
 
 ## Tech stack
 

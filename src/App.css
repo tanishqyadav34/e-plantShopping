@@ -1,4 +1,5 @@
-.landing-page {
+.landing-page,
+.background-image {
   min-height: 100vh;
   position: relative;
   isolation: isolate;
@@ -173,7 +174,7 @@
 
 .cart-page { max-width: 900px; min-height: calc(100vh - 74px); }
 .cart-heading { margin-bottom: 36px; }
-.cart-items { border-top: 1px solid #dce5d8; }
+.cart-container { border-top: 1px solid #dce5d8; }
 .cart-item {
   display: grid;
   grid-template-columns: 120px minmax(0, 1fr) auto;

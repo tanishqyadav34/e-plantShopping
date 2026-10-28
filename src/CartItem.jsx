@@ -6,6 +6,18 @@ function CartItem({ onContinueShopping }) {
   const dispatch = useDispatch()
   const total = items.reduce((sum, item) => sum + item.cost * item.quantity, 0)
 
+  function handleIncrement(item) {
+    dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }))
+  }
+
+  function handleDecrement(item) {
+    if (item.quantity > 1) {
+      dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }))
+    } else {
+      dispatch(removeItem(item.name))
+    }
+  }
+
   return (
     <main className="cart-page">
       <div className="cart-heading">
@@ -19,7 +31,7 @@ function CartItem({ onContinueShopping }) {
         </div>
       ) : (
         <>
-          <div className="cart-items">
+          <div className="cart-container">
             {items.map((item) => (
               <article className="cart-item" key={item.name}>
                 <img src={item.image} alt={item.name} />
@@ -27,15 +39,9 @@ function CartItem({ onContinueShopping }) {
                   <h2>{item.name}</h2>
                   <p className="cart-unit-price">${item.cost} each</p>
                   <div className="quantity-controls" aria-label={`${item.name} quantity`}>
-                    <button aria-label={`Decrease ${item.name} quantity`} onClick={() => {
-                      if (item.quantity > 1) {
-                        dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }))
-                      } else {
-                        dispatch(removeItem(item.name))
-                      }
-                    }}>−</button>
+                    <button aria-label={`Decrease ${item.name} quantity`} onClick={() => handleDecrement(item)}>−</button>
                     <span>{item.quantity}</span>
-                    <button aria-label={`Increase ${item.name} quantity`} onClick={() => dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }))}>+</button>
+                    <button aria-label={`Increase ${item.name} quantity`} onClick={() => handleIncrement(item)}>+</button>
                   </div>
                   <p className="subtotal">Subtotal: ${(item.cost * item.quantity).toFixed(2)}</p>
                 </div>
